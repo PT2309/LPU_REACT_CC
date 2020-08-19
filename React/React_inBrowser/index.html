@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>My React In Browser</title>
+</head>
+<body>
+    <h2>react Inbrowser</h2>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis consequatur repudiandae accusantium architecto aperiam! Eum libero incidunt soluta voluptatibus explicabo labore, harum, ea voluptatum, tempora corporis atque rem quis ad.</p>
+    <div id='root'></div>
+
+    <script type='text/babel'>
+        
+        class Profile extends React.Component{
+        
+            // constructor(props){
+            //     super(props);
+            //     this.state = {
+            //         userName: 'Cipherschools',
+            //         courseName: 'React',
+            //         duration: 14,
+            //         completed: false,
+            //         buttonName: 'Not Completed'
+            //     }
+            //     this.handleClick = this.handleClick.bind(this);
+            // }
+
+            state = {
+                    userName: 'Cipherschools',
+                    courseName: 'React',
+                    duration: 14,
+                    completed: false,
+                    buttonName: 'Not Completed'
+                }
+            
+            handleClick = () => {
+                console.log(this);
+                // console.log(state.completed, state.buttonName);
+                this.state.completed = true;
+                this.setState({
+                    completed: true,
+                    buttonName: 'Completed'
+                });
+            }
+
+            render(){
+                return(
+                <div>
+                    <Welcome userName = {this.state.userName}/>
+                    <p>Course Name : {this.state.courseName}</p>
+                    <p>Course Completed : {this.state.completed ? 'Yes': 'No'}</p>
+                    <button onClick={this.handleClick}>{this.state.buttonName}</button>
+                </div>
+                )
+            }
+        }      
+        
+        // Functional Components 
+        // Props are immutable 
+        // Stateless Components
+        // Pure Functions - the funstions that don't modify anything.
+        function Welcome(props){
+            return(
+                <div>
+                    <h3>Welcome {props.userName}</h3>
+                    <blockquote>React is the best UI library</blockquote>
+                </div>    
+            )
+        }
+
+        //functional component
+        // function Clock(props){
+        //     return ( 
+        //         <div>
+        //             <h1>The time is</h1>
+        //             <h2> {props.date.toLocaleTimeString()}.</h2>
+        //         </div>
+        //         )
+            
+        // }
+        // function display(){
+        //     ReactDOM.render(<Clock date={new Date()} />, 
+        //     document.querySelector('#root'));
+        // }  
+
+        // setInterval(display, 1000);
+        ReactDOM.render(<Profile />, document.querySelector('#root'))
+    </script>
+</body>
+</html>
+
