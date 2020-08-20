@@ -2,7 +2,7 @@ import React from 'react';
 import './display.css';
 import Loading from './Loading';
 
-const Display = ({courseDetails}) => {
+const Display = ({courseDetails, deleteCourse, editCourse}) => {
 
     // const courseDetails = props.courseDetails;
 
@@ -18,7 +18,8 @@ const Display = ({courseDetails}) => {
                 <h3>Course Name: {title} </h3>
                 <p>Details: {details}</p>
                 <p>Instructor:<i>{instructor}</i></p>
-                <button>Delete</button>
+                <button onClick={() => {deleteCourse(id)} }>Delete</button>
+                {/* <button onClick={ () => {editCourse(id, instructor, title, details)}}>Edit button</button> */}
            </div>        
         )
     }) : ( <Loading />)

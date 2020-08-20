@@ -25,12 +25,22 @@ class App extends React.Component {
      })
    }
 
+   deleteCourse = (id) => {
+      let newCourse = this.state.courseDetails.filter( course => {
+        return course.id !== id;
+      })
+
+      this.setState({
+        courseDetails: newCourse
+      })
+   }
+
 
   render(){
     return (
       <div className="App">
         <Navbar heading={this.state.heading}></Navbar>
-        <Display courseDetails={this.state.courseDetails}></Display>
+        <Display courseDetails={this.state.courseDetails} deleteCourse={this.deleteCourse}></Display>
         <AddCourse addCourse ={this.addCourse}></AddCourse>
       </div>
     );
