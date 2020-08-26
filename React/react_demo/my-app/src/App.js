@@ -1,5 +1,5 @@
 import React from 'react';
-import Display from './components/Display';
+import Display from './components/classDisplay';
 import Navbar from './components/Navbar';
 import AddCourse from './components/AddCourse';
 import './App.css';
@@ -7,10 +7,7 @@ import './App.css';
 class App extends React.Component {
   state = { 
     heading: 'React App',
-    courseDetails: [
-      { id: 1, title: 'React', details: 'Best UI Library ', instructor: 'Jack' },
-      { id: 2, title: 'Node', details: 'I/O, event driven environment', instructor: 'Jack' },
-    ]
+    courseDetails: []
    }
 
    addCourse = (course) => {
@@ -35,8 +32,21 @@ class App extends React.Component {
       })
    }
 
+   componentDidMount(){
+      const courseDetails = [
+        { id: 1, title: 'React', details: 'Best UI Library ', instructor: 'Jack' },
+        { id: 2, title: 'Node', details: 'I/O, event driven environment', instructor: 'Jack' }
+      ]
+    //  console.log('Mounting Complete! Inside Component Did Mount...')
+     setTimeout( () => {
+      this.setState({courseDetails})
+     }, 2000);
+     
+   }
+
 
   render(){
+    // console.log('Rendering after constructor');
     return (
       <div className="App">
         <Navbar heading={this.state.heading}></Navbar>

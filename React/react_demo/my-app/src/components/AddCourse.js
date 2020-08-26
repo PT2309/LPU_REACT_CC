@@ -27,8 +27,19 @@ class AddCourse extends Component{
             instructor: ''
         })    
     }
+
+    componentDidMount(){
+        // console.log('Add Course has mounted...')
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        // console.log('updating Add course component');
+        // console.log('Props', prevProps, this.props);
+        // console.log('State', prevState, this.state);
+    }
     
     render(){
+        // console.log('Inside AddCourse Render')
         return(
             <form className='add-form' onSubmit={this.handleSubmit}>
                 <label htmlFor='title'>Course Name</label>
